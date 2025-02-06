@@ -1,0 +1,53 @@
+class Solution {
+public:
+    vector<vector<int>> result;
+
+    void twoSum(vector<int>& nums, int target, int i, int n) {
+        int right = n - 1;  // Instead of using `j`, we use `right`
+        
+        while (i < right) {
+            int sum = nums[i] + nums[right];
+            if (sum > target) {
+                right--;  // Move right pointer left to decrease sum
+            } else if (sum < target) {
+                i++;  // Move left pointer right to increase sum
+            } else {
+                result.push_back({-target, nums[i], nums[right]});
+                
+                // Skip duplicates for the second and third elements
+                while (i < right && nums[i] == nums[i + 1]) i++;
+                while (i < right && nums[right] == nums[right - 1]) right--;
+                
+                // Move pointers after finding a valid pair
+                i++;
+                right--;
+            }
+        }
+    }
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        int n = nums.size();
+        if (n < 3) {
+            return {};
+        }
+        
+        result.clear();
+        
+        // Sort the array to enable the two-pointer approach
+        sort(nums.begin(), nums.end());
+        
+        // Iterate and fix the first element
+        for (int i = 0; i < n; i++) {
+            // Skip duplicate first elements to avoid duplicate triplets
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+            
+            int target = -nums[i];  // Finding two numbers that sum to -nums[i]
+            
+            // Call twoSum to find the other two numbers
+            twoSum(nums, target, i + 1, n);
+        }
+        
+        return result;
+    }
+};
