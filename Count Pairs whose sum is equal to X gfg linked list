@@ -1,0 +1,26 @@
+class Solution {
+  public:
+    // your task is to complete this function
+    int countPairs(struct Node* head1, struct Node* head2, int x) {
+        // Code here
+        unordered_set<int> elements; // Store elements from first list
+    int count = 0;
+
+    // Insert all elements from first linked list into a hash set
+    while (head1) {
+        elements.insert(head1->data);
+        head1 = head1->next;
+    }
+
+    // Traverse second linked list and check if (x - value) exists in the set
+    while (head2) {
+        if (elements.find(x - head2->data) != elements.end()) {
+            count++;
+        }
+        head2 = head2->next;
+    }
+
+    return count;
+
+    }
+};
