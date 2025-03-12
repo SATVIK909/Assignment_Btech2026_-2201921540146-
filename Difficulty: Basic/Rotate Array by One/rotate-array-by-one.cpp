@@ -12,16 +12,17 @@ using namespace std;
 class Solution {
   public:
     void rotate(vector<int> &arr) {
-        // code here
+        
         int n = arr.size();
-        if (n <= 1) return; // No rotation needed for empty or single-element arrays
+        if (n <= 1) return; 
 
-        int last = arr[n - 1]; // Store last element
+        int last = arr[n - 1]; 
         for (int i = n - 1; i > 0; i--) {
-            arr[i] = arr[i - 1]; // Shift elements right
+            arr[i] = arr[i - 1]; 
         }
-        arr[0] = last; // Place last element at the front
+        arr[0] = last; 
     }
+    
 };
     
 
