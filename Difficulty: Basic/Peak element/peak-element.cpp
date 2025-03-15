@@ -14,17 +14,16 @@ class Solution {
     while (low <= high) {
         int mid = low + (high - low) / 2;
 
-        // Check if mid is a peak element
+
         if ((mid == 0 || arr[mid] > arr[mid - 1]) &&
             (mid == arr.size() - 1 || arr[mid] > arr[mid + 1])) {
-            return mid; // Peak found
+            return mid; 
         }
 
-        // If the right neighbor is greater, move right
+        
         if (mid < arr.size() - 1 && arr[mid] < arr[mid + 1]) {
             low = mid + 1;
         }
-        // Otherwise, move left
         else {
             high = mid - 1;
         }
