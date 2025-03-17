@@ -83,11 +83,7 @@ int maxPalindrome(Node *head)
     }
     return result;
 }
-Node *newNode(int data) {
-    Node *temp = new Node(data);  // Pass data to constructor
-    temp->next = NULL;
-    return temp;
-}
+Node *newNode(int data) {  }
 };
 
 
