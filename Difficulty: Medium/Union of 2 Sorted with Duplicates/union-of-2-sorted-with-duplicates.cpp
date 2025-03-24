@@ -19,9 +19,11 @@ class Solution {
 
         if (i < n && j < m) {
             if (a[i] < b[j]) {
-                result.push_back(a[i++]);
+                result.push_back(a[i]);
+                i++;
             } else if (a[i] > b[j]) {
-                result.push_back(b[j++]);
+                result.push_back(b[j]);
+                j++;
             } else {
                 result.push_back(a[i]);
                 i++; j++;
